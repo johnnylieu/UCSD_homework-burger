@@ -1,3 +1,5 @@
+const { post } = require("../../../../controllers/burgers_controller");
+
 $(function () {
     $(".create-form").on("submit", function (event) {
         event.preventDefault();
@@ -6,12 +8,28 @@ $(function () {
             devoured: 0
         };
 
-        $.ajx("/api/burgers", {
+        $.ajax("/api/burgers", {
             type: "POST",
             data: newBurger
         }).then(function () {
             console.log("Added new burger");
             location.reload();
         });
+    });
+
+    $(".eatburger").on("click", function(event){
+        event.preventDefault();
+        var id = $(this).data("id");
+        var devouredState = {
+            devoured: 1
+        };
+
+        $.ajax("api/burgers/" + id, {
+            type: "PUT",
+            data: devouredState
+        }).then(function() {
+            console.log("nom nom nom... burger devoured");
+            location.reload();
+        })
     });
 });
