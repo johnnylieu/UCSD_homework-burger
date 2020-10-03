@@ -1,5 +1,13 @@
 var connection = require("../config/connection");
 
+function createQmarks(num) {
+    var arr = [];
+    for(let i = 0; i < num; i++) {
+        arr.push("?");
+    }
+    return arr.toString();
+}
+
 var orm = {
     selectAll: function (table, cb) {
         var dbQuery = "SELECT * FROM " + table + ";";
