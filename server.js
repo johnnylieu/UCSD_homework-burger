@@ -9,6 +9,7 @@ var app = express();
 app.use(express.static("public"));
 
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // Start our server so that it can begin listening to client requests.
 app.listen(PORT, function() {
