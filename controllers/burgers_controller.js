@@ -17,7 +17,6 @@ router.get("/", function(req, res) {
       ["burger_name", "devoured"],
       [req.body.burger_name, req.body.devoured],
       function(result) {
-        // Send back the ID of new burger
         res.json({ id: result.insertId });
       }
     );
@@ -49,4 +48,5 @@ router.get("/", function(req, res) {
     });
   });
 });
+
 module.exports = router;
