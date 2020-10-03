@@ -22,4 +22,15 @@ var orm = {
             cb(res);
         });
     }
+
+    updateOne: function(table, objColVals, condition, cb) {
+        var dbQuery = "UPDATE " + table + " SET " + translateSQL(objColVals) + " WHERE " + condition;
+        console.log(dbQuery);
+        connection.query(dbQuery, vals, function(err, res) {
+            if (err) {
+                throw err;
+            }
+            cb(res);
+        });
+    }
 };
